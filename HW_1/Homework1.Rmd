@@ -1,0 +1,160 @@
+---
+title: "Homework_1"
+author: "Megha Pandit"
+date: "February 11, 2019"
+output: pdf_document
+latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+```
+###SECTION 5.1
+
+$~$
+
+7 A die is rolled until the first time T that a six turns up.
+(a) What is the probability distribution for T?
+
+__**Considering possible values for T starting from T = 1, i.e., getting a 6 on the first roll**__
+
+$$P(T = 1) = \frac{1}{6}$$
+__**Probability of getting any number other than 6 on the first roll and getting a 6 on the second roll is**__
+$$P(T = 2) = (1 - \frac{1}{6})(\frac{1}{6}) = (\frac{5}{6})(\frac{1}{6})$$
+__**Probability of getting any number other than 6 in the first two rolls and getting a 6 on the third roll is**__
+
+$$P(T = 3) = (1 - \frac{1}{6})(1 - \frac{1}{6})(\frac{1}{6}) = (\frac{5}{6})^2(\frac{1}{6})$$
+__**Similarly, for T = 4, we have**__
+$$P(T = 3) = (\frac{5}{6})^3(\frac{1}{6})$$
+__**Therefore, for T = n, we have**__ $P(T = n) = (\frac{5}{6})^{n -1}(\frac{1}{6})$
+__**Therefore, the distribution for T is a geometric distribution.**__
+
+
+(b) Find P(T > 3).
+
+$$P(T > 3) = 1 - [P(T = 1) + P(T = 2) + P(T = 3)]$$
+$$P(T > 3) = 1 - \frac{1}{6} - \frac{5}{36} - \frac{25}{216} = \frac{125}{216} = 0.5787$$
+
+(c) Find P(T > 6|T > 3).
+
+$$P(T > 6|T > 3) = \frac{P(T > 6 \cap T > 3)}{P(T > 3)}$$
+__**But, P(T > 6) implies that T > 3. Therefore, the intersection between T > 6 and T > 3 is just T > 6. That is, **__
+
+$$P(T > 6 \cap T > 3) = P(T > 6)$$
+$$P(T > 6 \cap T > 3) = P(T > 3) - P(T = 4) - P(T = 5) - P(T = 6) = 0.5787 - 0.0964 - 0.0803 - 0.0669 = 0.3351$$
+$$P(T > 6 \cap T > 3) = \frac{0.3351}{0.5787} = 0.5790 or around \frac{125}{216}$$
+
+$~$
+
+10. A census in the United States is an attempt to count everyone in the country. It is inevitable that many people are not counted. The U. S. Census Bureau proposed a way to estimate the number of people who were not counted by the latest census. Their proposal was as follows: In a given locality, let N denote the actual number of people who live there. Assume that the census counted n1 people living in this area. Now, another census was taken in the locality, and n2 people were counted. In addition, n12 people were counted both times.
+(a) Given N, n1, and n2, let X denote the number of people counted both times. Find the probability that X = k, where k is a fixed positive integer between 0 and n2.
+
+__**Since the distribution of X is hypergeometric,**__ $P(X = k) = h(N, n_1, n_2, k)$
+
+$$h(N, n_1, n_2, k) = \frac{{\binom{n_1}{k}}{\binom{N - n_1}{n_2 - k}}}{\binom{N}{n_2}}$$
+(b) Now assume that X = n12. Find the value of N which maximizes the expression in part (a). Hint: Consider the ratio of the expressions for successive values of N.
+
+__**Now,**__ $X = n_{12}$ . __**Taking the hint - considering the ratio of expressions for successive values of N,**__
+
+$$\frac{h(N+1, n_1, n_2, k)}{h(N, n_1, n_2, k)} = \frac{{\binom{n_1}{k}}{\binom{N + 1 - n_1}{n_2 - k}}}{\binom{N + 1}{n_2}}\frac{\binom{N}{n_2}}{{\binom{n_1}{k}}{\binom{N - n_1}{n_2 - k}}}$$
+
+$~$
+
+16. Assume that, during each second, a Dartmouth switchboard receives one call with probability .01 and no calls with probability .99. Use the Poisson approximation to estimate the probability that the operator will miss at most one call if she takes a 5-minute coffee break.
+
+__**In this case, "success" is "missing a phone call". Let X be the number of calls missed. We have n = 5 minutes or n = 5*60 = 300 seconds. p = 0.01, Therefore,**__
+$$\lambda = np = 300*0.01 = 3$$
+$$P(X = 0) = \frac{e^{-3}3^0}{0!} = e^{-3} = 0.0498$$
+$$P(X = 1) = \frac{e^{-3}3^1}{1!} = 3e^{-3} = 0.1494$$
+__**Therefore, probability of missing atmost one call is**__ $P(X = 0) + P(X = 1) = 0.0498 + 0.1494 = 0.1992$
+
+$~$
+
+18. A baker blends 600 raisins and 400 chocolate chips into a dough mix and, from this, makes 500 cookies.
+(a) Find the probability that a randomly picked cookie will have no raisins.
+
+__**Let X be the number of raisins in the cookie. Then, if X follows a Poisson Distribution, then "success" is "raisin is there in the cookie". Then, p = 1/500 and n = 600. Then,**__ $\lambda = np = \frac{600}{500} = 1.2$
+
+__**Probability that a randomly picked cookie will have no raisins is given by**__
+$$P(X = 0) = \frac{e^{-1.2}1.2^0}{0!} = e^{-1.2} = 0.301$$
+
+(b) Find the probability that a randomly picked cookie will have exactly two chocolate chips.
+
+__**Let Y be the number of chocolate chips in the cookie.**__
+
+$$p = 1/500 and n = 400. Therefore, \lambda = np = \frac{400}{500} = 0.8$$
+$$P(Y = 2) = \frac{e^{-0.8}0.8^2}{2!} = 0.1438$$
+
+(c) Find the probability that a randomly chosen cookie will have at least two bits (raisins or chips) in it.
+
+__**Let Z be X + Y.**__
+
+$$p = 1/500 and n = 600 + 400 = 1000. Therefore, \lambda = 2$$
+$$P(Z>= 2) = 1 - P(Z = 0) - P(Z = 1) = 1 - e^{-2} - 2e^{-2} = 0.594$$
+
+$~$
+
+25. Reese Prosser never puts money in a 10-cent parking meter in Hanover. He assumes that there is a probability of .05 that he will be caught. The first offense costs nothing, the second costs 2 dollars, and subsequent offenses cost 5 dollars each. Under his assumptions, how does the expected cost of parking 100 times without paying the meter compare with the cost of paying the meter each time?
+
+__**p = 0.05, n = 100. Therefore, **__ $\lambda = 5$
+__**The probability of paying more than the cost of paying the meter each time**__
+
+$$P(X = 0) = e^{-5} = 0.0067$$
+$$P(X = 1) = 5e^{-5} = 0.0337$$
+$$P(X = 2) = \frac{25e^{-5}}{2!} = 0.0842$$
+$$P(X = 3) = \frac{125e^{-5}}{3!} = 0.1404$$
+$$P(X > 3) = 1- 0.0337 - 0.0842 - 0.1404 = 0.735$$
+__**Total cost of paying the meter each time is 0.1*100 = 10. If he gets caught more than 3 times, then there is a 73.5% chance that he will pay more.**__
+
+$~$
+
+27. Assume that the probability that there is a significant accident in a nuclear power plant during one year's time is .001. If a country has 100 nuclear plants, estimate the probability that there is at least one such accident during a given year.
+
+__**Let X represent the number of accidents during the given year.**__
+
+$$p = 0.001, n = 100, therefore, \lambda = 0.001*100 = 0.1$$
+__**The probability that there is at least one such accident during the given year is**__
+$$P(X >= 1) = 1 - P(X = 0) = 1 - \frac{e^{-0.1}0.1^0}{0!} = 1 - e^{-0.1} = 1 - 0.9048 = 0.095$$
+
+$~$
+
+28. An airline finds that 4 percent of the passengers that make reservations on a particular flight will not show up. Consequently, their policy is to sell 100 reserved seats on a plane that has only 98 seats. Find the probability that every person who shows up for the flight will find a seat available.
+
+__**Let X be the number of passengers who make reservations and do not show up. If X >= 2, then, all the passengers who show up will have a seat. Therefore, we have to find the probability that X >= 2.**__
+
+$p = 0.04 and n = 100. Therefore, \lambda = 0.04*100 = 4$
+
+$$P(X >= 2)  = 1 - P(X = 0) - P(X = 1) = 1 - e^{-4} - 4e^{-4} = 0.9085$$ 
+__**The probability that every person who shows up for the flight will find a seat available is 90.85%.**__
+
+$~$
+
+38. A manufactured lot of buggy whips has 20 items, of which 5 are defective. A random sample of 5 items is chosen to be inspected. Find the probability that the sample contains exactly one defective item
+(a) if the sampling is done with replacement.
+
+__**Let X be the number of defective buggy whips. Then, P(X = 1) is**__
+
+$$P(X = 1) = {\binom{5}{1}}(\frac{5}{20})^1(\frac{15}{20})^4 = {\binom{5}{1}}(\frac{1}{4})(\frac{3}{4})^4$$
+
+(b) if the sampling is done without replacement.
+
+__**If the sampling is done without replacement, then X will have a hypergeometric distribution. Therefore, P(X = 1) is given by**__
+
+$$P(X = 1) = h(20, 5, 5, 1) = \frac{{\binom{5}{1}}{\binom{20 - 5}{5 -1}}}{\binom{20}{5}}$$
+
+$~$
+
+###SECTION 5.2 SOLUTIONS
+
+
+```{r}
+include_graphics("C:/Users/GP/Desktop/MEGHA/SemII/MA677_Conc_Foundations/MA677---Conceptual-Foundations/HW_1/IMG_4403.png")
+```
+
+```{r, out.width="95%"}
+include_graphics("C:/Users/GP/Desktop/MEGHA/SemII/MA677_Conc_Foundations/MA677---Conceptual-Foundations/HW_1/IMG_4402.png")
+```
+
+
+
