@@ -1,0 +1,28 @@
+---
+title: "Class_Notes_MA677"
+author: "Megha Pandit"
+date: "February 12, 2019"
+output: pdf_document
+---
+
+```{r setup, echo = FALSE, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+```
+Notes on the next page.
+
+```{r, echo=FALSE}
+include_graphics("C:/Users/GP/Desktop/MEGHA/SemII/MA677_Conc_Foundations/MA677---Conceptual-Foundations/IMG_4404.png")
+```
+
+
+
+```{r, echo=FALSE}
+include_graphics("C:/Users/GP/Desktop/MEGHA/SemII/MA677_Conc_Foundations/MA677---Conceptual-Foundations/IMG_4405.png")
+
+```
+
+```{r, echo=FALSE, out.width="95%"}
+include_graphics("C:/Users/GP/Desktop/MEGHA/SemII/MA677_Conc_Foundations/MA677---Conceptual-Foundations/IMG_4406.png")
+
+```
