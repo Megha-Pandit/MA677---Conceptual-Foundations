@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-_This project was done in collaboration with Angela, Janvi, and Stella, and with some help from Disptanshu._ 
+_This project was done in collaboration with Angela, Janvi, and Stella, and with some help from Diptanshu._ 
 
 #Statistics and the Law
 ##(1) the data are sufficient evidence of discrimination to warrant corrective action
